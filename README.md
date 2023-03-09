@@ -30,6 +30,6 @@ Script will output two files:
   - expanded_links.txt
     - A text file containing all links, with shortened URL expansion performed. Also includes functionality to parse all links from telegra.ph sites.
   
-![Example yt_api_verbose.txt](verbose_output.png)
+![Example yt_api_verbose.txt](images/verbose_output.png)
 
-![Example expanded_links.txt](expanded_output.png)
+![Example expanded_links.txt](images/expanded_output.png)
