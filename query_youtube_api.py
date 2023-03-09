@@ -92,11 +92,11 @@ request = youtube.search().list(
     q = 'cracked software',
     part = 'snippet',
     type = 'video',
-    maxResults = 50,
-    order = 'date',
+    maxResults = 10,
+    order = 'relevance',
     videoDuration = 'short',
     safeSearch = 'none',
-    publishedAfter = '2023-03-09T06:00:00Z',
+    publishedAfter = '2023-03-06T00:00:00Z',
     relevanceLanguage = 'en',
     key = DEVELOPER_KEY
 )
