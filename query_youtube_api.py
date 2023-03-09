@@ -96,6 +96,8 @@ request = youtube.search().list(
     order = 'date',
     videoDuration = 'short',
     safeSearch = 'none',
+    publishedAfter = '2023-03-09T06:00:00Z',
+    relevanceLanguage = 'en',
     key = DEVELOPER_KEY
 )
 
