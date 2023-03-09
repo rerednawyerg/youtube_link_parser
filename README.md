@@ -1,7 +1,7 @@
 # YouTube Link Parser
 Script to query YouTube API and parse the results
 
-##Notes
+## Notes
 - I created a custom version of [urlexpander](https://github.com/SMAPPNYU/urlExpander), called urlexpander_custom, to add the capability to expand `idf.tw` shortlinks.
 - Will need to create a YouTube API key. Follow instructions here: https://developers.google.com/youtube/v3/getting-started
 
