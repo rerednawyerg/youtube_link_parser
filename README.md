@@ -2,6 +2,7 @@
 Script to query YouTube API and parse out potentially malicious links
 
 ## Notes
+- By default, the script queries for the keywords `cracked software`
 - I created a custom version of [urlexpander](https://github.com/SMAPPNYU/urlExpander), called urlexpander_custom, to add the capability to expand `idf.tw` shortlinks.
 - Will need to create a YouTube API key. Follow instructions here: https://developers.google.com/youtube/v3/getting-started
 
