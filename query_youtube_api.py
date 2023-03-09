@@ -66,33 +66,36 @@ def parse_response(json_content, verbose_output):
 	for element in ids:
 		urls = []
 		indv_response = requests.get('https://www.googleapis.com/youtube/v3/videos?part=snippet&id='+element+'&key=' + DEVELOPER_KEY, headers=headers)
-		json_content = indv_response.json()
-		for item in json_content['items']:
-			verbose_output.write("Video URL: https://www.youtube.com/watch?v=" + element + "\nChannel ID: " + (item['snippet']['channelId']) + \
-				"\nChannel Title: " + (item['snippet']['channelTitle']) + "\nDescription: \n" + (item['snippet']['description']) + "\n")
-			urls = regex.findall(url_pattern, str(item['snippet']['description']))
-			verbose_output.write("URLs: \n")
-			for url in urls:
-				if not regex.findall(ignore_pattern, str(url)):
-					verbose_output.write(url + '\n')
-					total_urls.append(url)
-		verbose_output.write('\n\n------------------------------------------------------------------------------------------------\nSection End\n------------------------------------------------------------------------------------------------\n')
+		if indv_response.status_code == 200:
+			json_content = indv_response.json()
+			for item in json_content['items']:
+				verbose_output.write("Video URL: https://www.youtube.com/watch?v=" + element + "\nChannel ID: " + (item['snippet']['channelId']) + \
+					"\nChannel Title: " + (item['snippet']['channelTitle']) + "\nDescription: \n" + (item['snippet']['description']) + "\n")
+				urls = regex.findall(url_pattern, str(item['snippet']['description']))
+				verbose_output.write("URLs: \n")
+				for url in urls:
+					if not regex.findall(ignore_pattern, str(url)):
+						verbose_output.write(url + '\n')
+						total_urls.append(url)
+			verbose_output.write('\n\n------------------------------------------------------------------------------------------------\nSection End\n------------------------------------------------------------------------------------------------\n')
+		else:
+			continue
 
 total_urls = []
 
 ##Add to ignore_pattern as needed
 url_pattern = r'https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)'
-ignore_pattern = "(youtube|ytimg|googlevideo|ggpht|googleusercontent|google|gstatic|adobe|twitter|soundcloud|facebook|instagram|tiktok|linkedin)\\.com|(schema|js|ietf)\\.org|youtu\\.be|amzn\\.to|wsop\\.so|\\.\\.$"
+ignore_pattern = "(youtube|ytimg|googlevideo|ggpht|virustotal|googleusercontent|google|gstatic|adobe|twitter|soundcloud|facebook|instagram|tiktok|linkedin)\\.com|(schema|js|ietf)\\.org|youtu\\.be|amzn\\.to|wsop\\.so|\\.\\.$"
 
 ##Customize fields as needed
 request = youtube.search().list(
     q = 'cracked software',
     part = 'snippet',
     type = 'video',
-    maxResults = 10,
+    maxResults = 50,
     order = 'date',
     videoDuration = 'short',
-    publishedAfter = '2023-03-09T00:00:00Z',
+    safeSearch = 'none',
     key = DEVELOPER_KEY
 )
 
