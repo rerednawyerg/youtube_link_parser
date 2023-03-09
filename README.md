@@ -1,5 +1,5 @@
 # YouTube Link Parser
-Script to query YouTube API and parse the results
+Script to query YouTube API and parse out potentially malicious links
 
 ## Notes
 - I created a custom version of [urlexpander](https://github.com/SMAPPNYU/urlExpander), called urlexpander_custom, to add the capability to expand `idf.tw` shortlinks.
@@ -25,7 +25,7 @@ pip3 install -r requirements.txt
 
 Script will output two files:
   - yt_api_verbose.txt
-    - A text file containing video URL, channel ID, channel title, video description, and any associated URLs extracted
+    - A text file containing video URL, channel ID, channel title, video description (these usually contain an archive password), and any associated URLs extracted.
   - expanded_links.txt
     - A text file containing all links, with shortened URL expansion performed. Also includes functionality to parse all links from telegra.ph sites.
   
